@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pd:ProcessDefinition xmlns:xsl="http://www.w3.org/1999/XSL/Transform" xmlns:pfx="http://www.tibco.com/schemas/0.ProjectZero/Resources/Schemas/Commons/Header" xmlns:pd="http://xmlns.tibco.com/bw/process/2003" xmlns:pfx2="http://www.tibco.com/schemas/0.ProjectZero/Resources/Schemas/Models/Context" xmlns:ns="http://www.tibco.com/schemas/0.ProjectZero/Resources/Schemas/SharedProcesses/WriteToFileRequest" xmlns:tib="http://www.tibco.com/bw/xslt/custom-functions" xmlns:ns2="http://www.tibco.com/schemas/2.ParseRenderXML/Resources/Schemas/Services/ParseRenderCatelogXMLRequest" xmlns:ns1="http://www.tibco.com/pe/EngineTypes">
+    <pd:name>Tests/TestParseRenderCateogXML.process</pd:name>
+    <pd:startName>Start</pd:startName>
+    <pd:startX>117</pd:startX>
+    <pd:startY>76</pd:startY>
+    <pd:returnBindings/>
+    <pd:endName>End</pd:endName>
+    <pd:endX>472</pd:endX>
+    <pd:endY>75</pd:endY>
+    <pd:errorSchemas/>
+    <pd:processVariables/>
+    <pd:targetNamespace>http://xmlns.example.com/1700996559186</pd:targetNamespace>
+    <pd:activity name="ParseRenderCatelogXML">
+        <pd:type>com.tibco.pe.core.CallProcessActivity</pd:type>
+        <pd:resourceType>ae.process.subprocess</pd:resourceType>
+        <pd:x>270</pd:x>
+        <pd:y>65</pd:y>
+        <config>
+            <processName>/Processes/Services/ShareofFolders/ParseRenderCatelogXML.process</processName>
+        </config>
+        <pd:inputBindings>
+            <ns2:ParseRenderCatelogXMLRequest>
+                <pfx:Header>
+                    <pfx2:Context>
+                        <pfx2:Correlationid>
+                            <xsl:value-of select="&quot;12345678910&quot;"/>
+                        </pfx2:Correlationid>
+                    </pfx2:Context>
+                    <pfx:timestamp>
+                        <xsl:value-of select="current-dateTime()"/>
+                    </pfx:timestamp>
+                </pfx:Header>
+                <ns2:Body>
+                    <ns2:sourcePath>
+                        <xsl:value-of select="&quot;C:\Users\rajpe\TICBO_Udemy_Course\Files\Input\&quot;"/>
+                    </ns2:sourcePath>
+                    <ns2:sourceFileName>
+                        <xsl:value-of select="&quot;catelogs.xml&quot;"/>
+                    </ns2:sourceFileName>
+                </ns2:Body>
+            </ns2:ParseRenderCatelogXMLRequest>
+        </pd:inputBindings>
+    </pd:activity>
+    <pd:transition>
+        <pd:from>Start</pd:from>
+        <pd:to>ParseRenderCatelogXML</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+    <pd:transition>
+        <pd:from>ParseRenderCatelogXML</pd:from>
+        <pd:to>End</pd:to>
+        <pd:lineType>Default</pd:lineType>
+        <pd:lineColor>-16777216</pd:lineColor>
+        <pd:conditionType>always</pd:conditionType>
+    </pd:transition>
+</pd:ProcessDefinition>
